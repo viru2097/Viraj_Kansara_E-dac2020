@@ -1,0 +1,45 @@
+1.) Write a program which takes a string and prints the number of vowels, consonants(non-vowels)
+ numbers and other characters. 
+
+
+import java.util.Scanner;
+class Test
+{
+	public static void main(String args[])
+	{
+		String str;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter your String:");
+		str = sc.nextLine();
+		int vowels=0,consonants=0,numbers=0,others=0;
+		for(int i=0;i<str.length();i++)
+		{
+			char ch = str.charAt(i);
+			if(ch=='a' || ch=='A' || ch=='e' || ch=='E' || ch=='i' || ch=='I' || ch=='o' || ch=='O' || ch=='u' || ch=='U')
+			{
+				vowels++;
+			}
+			else if((ch>= 'a' && ch<= 'z') || (ch>='A' && ch<='Z'))
+			{
+				consonants++;
+			}
+			else if ((ch>='0' && ch<='9')) 
+			{
+				numbers++;
+			}
+			else
+			{
+				others++;
+			}
+		}
+		System.out.println("Vowels:"+vowels);
+		System.out.println("Consonants:"+consonants);
+		System.out.println("Numbers:"+numbers);
+		System.out.println("Others:"+others);
+	}
+}
+
+
+
+2.) Given a string which contains numbers from 0 to 9 expressed as words, output a string which
+contains all numbers incremented by 1 

@@ -1,0 +1,212 @@
+import java.util.Scanner;
+
+1) Interface 1
+
+class Customer {
+	int AccNo;
+	String name;
+	static String BankName = "PNB";
+
+	public Customer(int an, String Name) {
+		AccNo = an;
+		name = Name;// TODO Auto-generated constructor stub
+	}
+
+	void Display() {
+		System.out.println(
+				"Account number of customer : " + AccNo + "and Name is :" + name + "with bank name " + BankName);
+	}
+}
+
+public class Interface_Inheritance {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter numbber of customer");
+		int number = sc.nextInt();
+
+		Customer c[] = new Customer[number];
+		int i = 0;
+		for (i = 0; i < c.length; i++) {
+			System.out.println("Enter Account Number of Customer");
+			int an = sc.nextInt();
+			System.out.println("Enter name of Customer");
+			String Name = sc.next();
+			c[i] = new Customer(an, Name);
+			c[i].Display();
+		}
+
+	}
+}
+
+
+2) Interface 2
+
+abstract class Employee {
+	int Empid;
+	int salary;
+	String EmpName;
+	static String Company = "Dassault Systemes";
+
+	public Employee(int empid, int sal, String empname) {
+		Empid = empid;
+		salary = sal;
+		EmpName = empname;
+	}
+
+	final void Display() {
+		System.out.println(Empid + " " + salary + " " + EmpName + " " + Company);
+	}
+
+}
+
+class Manager extends Employee {
+	public Manager(int empid, int sal, String empname) {
+		// Empid = empid;
+		// salary = sal;
+		// String EmpName = empname;// TODO Auto-generated constructor stub
+		super(empid, sal, empname);
+		String EmpPost = "Manager";
+		System.out.println("Employeee ID:" + empid + "   Salary : " + sal + "   Employee Name : " + empname);
+		System.out.println("Post of Employee :" + EmpPost);
+	}
+}
+
+class Worker extends Employee {
+	public Worker(int Empid, int salary) {
+		super(Empid, salary, Company);
+
+	}
+}
+
+class DetailsPOfEmployee {
+	public static void main(String[] args) {
+		Employee emp = new Manager(101, 10000, "Shubham");
+
+	}
+}
+
+
+3) Interface 3  
+
+
+interface School {
+	public void display();
+}
+
+class Students implements School {
+	int rollNumber;
+	String name;
+
+	public Students(int rollNum, String name) {
+		rollNumber = rollNum;// TODO Auto-generated constructor stub
+		this.name = name;
+	}
+
+	public void display() {
+		System.out.println("Roll Number is " + rollNumber);
+		System.out.println("Name is :" + name);
+	}
+}
+
+class Teachers implements School {
+	int salary;
+	String Teachername;
+
+	public Teachers(int salary, String name) {
+		this.salary = salary;// TODO Auto-generated constructor stub
+		this.Teachername = name;
+	}
+
+	public void display() {
+		System.out.println("Salary is " + salary);
+		System.out.println("Name is :" + Teachername);
+	}
+}
+
+public class Interface_school {
+	public static void main(String[] args) {
+		Students s1 = new Students(10, "Rahul");
+		s1.display();
+		Teachers t1 = new Teachers(20000, "Sunita");
+		t1.display();
+	}
+}
+
+
+
+4) Interface 4 
+
+
+interface College {
+	String CollegeName = "Kharghar-Mumbai";
+	String Dept = "CDAC e-DAC";
+
+	void displayCollegeData();
+}
+
+interface Exam {
+	String ExamName = "Mid Module Exam  ";
+	int TotalMarks = 50;
+	String NameSub = "  OOPs With Java";
+
+	void displayExamData();
+}
+
+class Student implements College, Exam {
+	String StudentName;
+	int MarksObtained;
+	String ModuleChamp;
+
+	public Student(String Name, int Marks, String module) {
+		StudentName = Name;
+		MarksObtained = Marks;
+		ModuleChamp = module;// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void displayCollegeData() {
+		System.out.println(CollegeName + Dept);
+	}
+
+	@Override
+	public void displayExamData() {
+		System.out.println(ExamName + TotalMarks + NameSub);
+	}
+
+	void DisplayStudent() {
+		System.out.println(StudentName + " " + MarksObtained + " " + ModuleChamp);
+	}
+
+}
+
+class JrStudent extends Student {
+	static String N;
+	static int Marks;
+	static String Module;
+
+	public JrStudent() {
+		super(N, Marks, Module);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void displayCollegeData() {
+		// TODO Auto-generated method stub
+		super.displayCollegeData();
+	}
+}
+
+public class Two_Intterface {
+	public static void main(String[] args) {
+		Student s = new Student("Shubham", 40, "1st");
+		s.displayCollegeData();
+		s.displayExamData();
+		s.DisplayStudent();
+
+		Student js = new JrStudent();
+		js.displayCollegeData();
+	}
+}
+
+
+
